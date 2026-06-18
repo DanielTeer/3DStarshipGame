@@ -1,7 +1,5 @@
 using UnityEngine;
 
-// This script smoothly follows a target at an offset.
-// The player can change the distance of the camera offset with O and L.
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;//Object camera follows
