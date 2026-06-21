@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// It reads the keyboard and tells the Pawn what to do.
 public class PlayerController : MonoBehaviour
 {
     public Pawn pawn;//The pawn that this controller is assigned
@@ -73,11 +72,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))//Shoot every key press may change to mouse.
+        if (Time.timeScale <= 0f)//If game is paused or in menu
         {
-            if (shooter != null)
+            return;//Do not allow shooting
+        }
+
+        if (Input.GetMouseButtonDown(0))//Left mouse button shoots
+        {
+            if (shooter != null)//Checks if shooter exists
             {
-                shooter.Shoot();
+                shooter.Shoot();//Calls the Shoot function
             }
         }
     }

@@ -8,6 +8,8 @@ public class Shooter : MonoBehaviour
 
     public float fallbackSpawnDistance = 2f;//Forgot firePoint is ok
 
+    public AudioClip shootSFX;//Shoot sound
+
     public void Shoot()
     {
         if (projectilePrefab == null)//If no bullet
@@ -30,5 +32,12 @@ public class Shooter : MonoBehaviour
         }
 
         Instantiate(projectilePrefab, spawnPosition, spawnRotation);//Create a bullet at the transform and rotation.
+
+        PlayerAudio playerAudio = GetComponent<PlayerAudio>();//Get PlayerAudio script
+
+        if (playerAudio != null)//If PlayerAudio exists
+        {
+            playerAudio.PlayClip(shootSFX);//Play shoot sound
+        }
     }
 }

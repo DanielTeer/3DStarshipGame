@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class StarShipPawn : Pawn
 {
     public float thrustForce = 20f;//Movement force

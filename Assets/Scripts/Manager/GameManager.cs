@@ -2,20 +2,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Static means this belongs to the class itself, not just one object.
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; }//Singleton access
+
+    public int score = 0;//Current player score
 
     private void Awake()
     {
-        // If there is no current GameManager, this object becomes the GameManager.
-        if (Instance == null)
+        if (Instance == null)//No GameManager exists yet
         {
-            Instance = this;
+            Instance = this;//This object becomes the GameManager
         }
         else
         {
-            // If another GameManager already exists, destroy this duplicate.
-            Destroy(gameObject);
+            Destroy(gameObject);//Destroy duplicate GameManager
         }
+    }
+
+    public void AddScore(int points)
+    {
+        score += points;//Add points to score
+
+        Debug.Log("Score: " + score);//Shows score in Console
     }
 }
