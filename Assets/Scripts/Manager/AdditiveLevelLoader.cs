@@ -121,4 +121,26 @@ public class AdditiveLevelLoader : MonoBehaviour
             }
         }
     }
+    public void ResetChunks()
+    {
+        StopAllCoroutines();//Stop any chunk loading currently happening
+
+        isLoading = false;//Allow loading again
+
+        for (int i = loadedScenes.Count - 1; i >= 0; i--)//Loop through loaded chunks
+        {
+            if (loadedScenes[i].isLoaded)//If scene is loaded
+            {
+                SceneManager.UnloadSceneAsync(loadedScenes[i]);//Unload chunk scene
+            }
+        }
+
+        loadedScenes.Clear();//Clear loaded scene list
+
+        loadedChunkNumbers.Clear();//Clear chunk number list
+
+        highestChunkLoaded = -1;//Reset chunk count
+
+        StartCoroutine(LoadStartingChunks());//Load starting chunks again
+    }
 }

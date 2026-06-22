@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 637557360960309668}
   - component: {fileID: 1479925140960922059}
   - component: {fileID: 7044953328996557455}
-  - component: {fileID: 4636579536320336468}
   - component: {fileID: 1091333369163015515}
   - component: {fileID: 7258924646388743540}
   - component: {fileID: 2114807003094711250}
   - component: {fileID: 4054565421162790949}
+  - component: {fileID: 5192916277079763734}
   m_Layer: 0
   m_Name: Starship_Player
   m_TagString: Untagged
@@ -120,18 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 100
   currentHealth: 0
---- !u!114 &4636579536320336468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1670321881229218997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b580061dd9727249a0d31978e8366f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeathDestroy
 --- !u!114 &1091333369163015515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +259,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
   audioSource: {fileID: 2114807003094711250}
+--- !u!114 &5192916277079763734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670321881229218997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea862dee3421824ea723c46c610fa81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath
+  respawnPosition: {x: 0, y: 0, z: 0}
+  health: {fileID: 0}
 --- !u!1 &3597472290481245719
 GameObject:
   m_ObjectHideFlags: 0

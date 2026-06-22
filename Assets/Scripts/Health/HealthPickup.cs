@@ -24,6 +24,7 @@ public class HealthPickup : MonoBehaviour
 
         if (health.currentHealth >= health.maxHealth)//Player is already full health
         {
+            Debug.Log("Player Health already full");
             return;
         }
 

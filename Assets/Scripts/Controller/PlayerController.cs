@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             return;//Do not allow shooting
         }
 
-        if (Input.GetMouseButtonDown(0))//Left mouse button shoots
+        if (Input.GetKeyDown(KeyCode.Space))//Left mouse button shoots
         {
             if (shooter != null)//Checks if shooter exists
             {

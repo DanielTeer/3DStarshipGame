@@ -69,4 +69,22 @@ public class CameraFollow : MonoBehaviour
         // Smoothly rotate toward that direction.
         transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSmoothness * Time.deltaTime);//Uses rotation speed needed to move camera
     }
+
+    public void SnapToTarget()
+    {
+        if (target == null)//No target
+        {
+            return;//Stop
+        }
+
+        Vector3 normalizedOffset = offsetDirection.normalized * offsetMagnitude;//Get camera offset
+
+        Vector3 desiredPosition = target.position + target.TransformDirection(normalizedOffset);//Find camera position
+
+        transform.position = desiredPosition;//Move camera instantly
+
+        Vector3 lookPoint = target.position + target.forward * lookAheadDistance + target.up * lookHeightOffset;//Point camera looks at
+
+        transform.rotation = Quaternion.LookRotation(lookPoint - transform.position);//Rotate camera instantly
+    }
 }

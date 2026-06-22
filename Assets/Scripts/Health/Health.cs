@@ -43,6 +43,12 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);//Clamp max health ampunt
     }
 
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;//Restore full health
+
+        isDead = false;//Allow object to take damage again
+    }
     private void Die()//How to die
     {
         isDead = true;//Sets the private bool to true

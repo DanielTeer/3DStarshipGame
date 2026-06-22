@@ -10,6 +10,12 @@ public class MenuButtons : MonoBehaviour
 
     public GameObject gameplayScreen;//Gameplay HUD screen
 
+    public GameObject gameOverScreen;//Game Over Screen
+
+    public GameObject victoryScreen;//High Score screen
+
+    public GameObject creditsScreen;//Credits screen
+
     private bool waitingForEnter = true;//Tracks if we are on press enter screen
 
     private void Start()
@@ -19,7 +25,7 @@ public class MenuButtons : MonoBehaviour
 
     private void Update()
     {
-        if (waitingForEnter && Input.GetKeyDown(KeyCode.Return))//If Enter is pressed on first screen
+        if (waitingForEnter && Input.anyKeyDown)//If any key is pressed on first screen
         {
             ShowMainMenu();//Go to main menu
         }
@@ -45,6 +51,21 @@ public class MenuButtons : MonoBehaviour
         if (gameplayScreen != null)
         {
             gameplayScreen.SetActive(false);//Hide gameplay screen
+        }
+
+        if (victoryScreen != null) 
+        {
+            victoryScreen.SetActive(false);
+        }
+
+        if (gameOverScreen != null) 
+        {
+            gameOverScreen.SetActive(false);
+        }
+
+        if (creditsScreen != null)
+        {
+            creditsScreen.SetActive(false);
         }
     }
 
@@ -92,15 +113,62 @@ public class MenuButtons : MonoBehaviour
 
     public void StartGame()
     {
+        if (GameManager.Instance != null)//If GameManager exists
+        {
+            GameManager.Instance.ResetGame();//Reset all gameplay data
+        }
+
         Time.timeScale = 1f;//Unpause game
 
-        waitingForEnter = false;//Stop listening for Enter
+        waitingForEnter = false;//Stop waiting for enter
 
-        HideAllScreens();//Hide everything
+        HideAllScreens();//Hide menu screens
 
-        if (gameplayScreen != null)
+        if (gameplayScreen != null)//If gameplay screen exists
         {
-            gameplayScreen.SetActive(true);//Show gameplay HUD
+            gameplayScreen.SetActive(true);//Show gameplay UI
+        }
+    }
+
+    public void ShowVictoryScreen() 
+    {
+        Time.timeScale = 0f;
+
+        waitingForEnter = false;
+
+        HideAllScreens();
+
+        if (victoryScreen != null)
+        {
+            victoryScreen.SetActive(true);
+        }
+    }
+
+    public void ShowGameOverScreen()
+    {
+        Time.timeScale = 0f;
+
+        waitingForEnter = false;
+
+        HideAllScreens();
+
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(true);
+        }
+    }
+
+    public void ShowCreditsScreen()
+    {
+        Time.timeScale = 0f;
+
+        waitingForEnter = false;
+
+        HideAllScreens();
+
+        if (creditsScreen != null)
+        {
+            creditsScreen.SetActive(true);
         }
     }
 
